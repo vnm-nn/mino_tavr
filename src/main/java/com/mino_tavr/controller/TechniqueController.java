@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping
 public class TechniqueController {
     @Autowired
-    private TechniqueService techniqService;
+    private TechniqueService techniqueService;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
@@ -21,37 +21,37 @@ public class TechniqueController {
 
     @GetMapping("/technique")
     public List<Technique> showAllTechniqs() {
-        return techniqService.getAllTechniqs();
+        return techniqueService.getAllTechniqs();
     }
 
     @GetMapping("/technique/{id}")
-    public Technique getTechniq(@PathVariable int id) {
-        Technique technique = techniqService.getTechniq(id);
+    public Technique getTechnique(@PathVariable int id) {
+        Technique technique = techniqueService.getTechniq(id);
         if(technique == null) {
-            throw new NoTechniqueInDBException("There is no Techniq with ID = " + id + " in DataBase");
+            throw new NoTechniqueInDBException("There is no Technique with ID = " + id + " in DataBase");
         }
         return technique;
     }
 
     @PostMapping("/technique")
-    public Technique addNewTechniq(@RequestBody Technique technique) {
-        techniqService.saveTechniq(technique);
+    public Technique addNewTechnique(@RequestBody Technique technique) {
+        techniqueService.saveTechniq(technique);
         return technique;
     }
 
     @PutMapping("/technique/{id}")
-    public Technique updateTechniq(@RequestBody Technique technique) {
-        techniqService.saveTechniq(technique);
+    public Technique updateTechnique(@RequestBody Technique technique) {
+        techniqueService.saveTechniq(technique);
         return technique;
     }
 
     @DeleteMapping("/technique/{id}")
-    public String deleteTechniq(@PathVariable int id) {
-        Technique technique = techniqService.getTechniq(id);
+    public String deleteTechnique(@PathVariable int id) {
+        Technique technique = techniqueService.getTechniq(id);
         if(technique == null) {
-            throw new NoTechniqueInDBException("There is no Techniq with ID = " + id + " in DataBase");
+            throw new NoTechniqueInDBException("There is no Technique with ID = " + id + " in DataBase");
         }
-        techniqService.deleteTechniq(id);
-        return "Techniq with ID = " + id + " was deleted";
+        techniqueService.deleteTechniq(id);
+        return "Technique with ID = " + id + " was deleted";
     }
 }
