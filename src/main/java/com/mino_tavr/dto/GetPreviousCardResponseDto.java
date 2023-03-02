@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetPreviousCard {
+public class GetPreviousCardResponseDto {
 
     Integer id_card_number;
     String number;
