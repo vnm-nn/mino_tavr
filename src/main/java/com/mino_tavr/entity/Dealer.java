@@ -14,15 +14,15 @@ public class Dealer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_dealer")
-    private int Id_dealer;
+    int id_dealer;
 
     @Column(name = "dealer_name")
-    private String Dealer_name;
+    String dealer_name;
 
     @Column(name = "subdivision")
-    private String Subdivision;
+    String subdivision;
 
     @Column(name = "department")
-    private String Department;
+    String department;
 
 }
