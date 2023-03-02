@@ -9,10 +9,14 @@ import java.awt.image.BufferedImage;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddCardNumberRequestDto {
+public class AllCardNumberResponseDto {
 
+    Integer id_card_number;
     String number;
-    byte[] image;
+    BufferedImage image;
     String device_type;
+    int interaction_id;
+    int reason_id;
+    int descriptionQuantity;
 
 }

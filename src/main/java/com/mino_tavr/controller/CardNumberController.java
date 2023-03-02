@@ -1,5 +1,6 @@
 package com.mino_tavr.controller;
 
+import com.mino_tavr.dto.AllCardNumberResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import java.util.List;
 public class CardNumberController {
 
     @GetMapping
-    public List<AllInteractionResponceDto> getAllInteraction(){
-        return card_numberService.getAllInteraction();
+    public List<AllCardNumberResponseDto> getAllCardNumber(){
+        return cardnumberService.getAllCardNumber();
     }
 }
