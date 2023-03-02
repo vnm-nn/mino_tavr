@@ -2,12 +2,16 @@ package com.mino_tavr.service;
 
 import com.mino_tavr.dto.AddCardNumberRequestDto;
 import com.mino_tavr.dto.AllCardNumberResponseDto;
-import com.mino_tavr.dto.SingleCardNumberDto;
+import com.mino_tavr.dto.SingleCardNumberResponseDto;
 import com.mino_tavr.entity.CardNumber;
 import com.mino_tavr.repository.CardNumberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class CardNumberServiceImpl implements CardNumberService{
 
     private final CardNumberRepository cardNumberRepository;
@@ -28,7 +32,7 @@ public class CardNumberServiceImpl implements CardNumberService{
     }
 
     @Override
-    public SingleCardNumberDto getCardNumberById(Integer id) {
+    public SingleCardNumberResponseDto getCardNumberById(Integer id) {
         return null;
     }
 }

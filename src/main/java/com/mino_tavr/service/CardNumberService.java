@@ -2,9 +2,12 @@ package com.mino_tavr.service;
 
 import com.mino_tavr.dto.AddCardNumberRequestDto;
 import com.mino_tavr.dto.AllCardNumberResponseDto;
-import com.mino_tavr.dto.SingleCardNumberDto;
+import com.mino_tavr.dto.SingleCardNumberResponseDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface CardNumberService {
 
@@ -12,6 +15,6 @@ public interface CardNumberService {
 
     List<AllCardNumberResponseDto> getAllCardNumber();
 
-    SingleCardNumberDto getCardNumberById(Integer id);
+    SingleCardNumberResponseDto getCardNumberById(Integer id);
 
 }

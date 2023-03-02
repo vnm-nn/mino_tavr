@@ -1,10 +1,11 @@
 package com.mino_tavr.controller;
 
+import com.mino_tavr.dto.AddCardNumberRequestDto;
 import com.mino_tavr.dto.AllCardNumberResponseDto;
+import com.mino_tavr.dto.SingleCardNumberResponseDto;
+import com.mino_tavr.service.CardNumberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,8 +14,27 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CardNumberController {
 
+    private final CardNumberService cardNumberService;
+
+    @PostMapping()
+    public void add(@RequestBody AddCardNumberRequestDto addCardNumberRequestDto) {
+
+        cardNumberService.add(addCardNumberRequestDto);
+
+    }
+
     @GetMapping
     public List<AllCardNumberResponseDto> getAllCardNumber(){
-        return cardnumberService.getAllCardNumber();
+
+        return cardNumberService.getAllCardNumber();
+
     }
+
+    @GetMapping(path = "/{id_card_number}")
+    public SingleCardNumberResponseDto getCardNumberById(@PathVariable Integer id_card_number) {
+
+        return cardNumberService.getCardNumberById(id_card_number);
+    }
+
+
 }

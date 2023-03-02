@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SingleCardNumberDto {
+public class SingleCardNumberResponseDto {
 
     Integer id_card_number;
     String number;
