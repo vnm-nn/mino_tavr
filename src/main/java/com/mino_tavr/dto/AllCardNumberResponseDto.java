@@ -17,7 +17,7 @@ public class AllCardNumberResponseDto {
     BufferedImage image;
     String device_type;
 
-    int interaction_id;
+    Integer interaction_id;
     String interaction_date_start;
     String interaction_date_end;
     Dealer dealer_start;
@@ -25,11 +25,11 @@ public class AllCardNumberResponseDto {
     Dealer member_start;
     Dealer member_end;
 
-    int reason_id;
+    Integer reason_id;
     String reason_type;
     String reason_number;
 
-    int description_id;
+    Integer description_id;
     String description_name;
     String serial_number;
     String inventory_number;
