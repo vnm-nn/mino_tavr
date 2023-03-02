@@ -13,5 +13,5 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Member {
+public class Description {
 }

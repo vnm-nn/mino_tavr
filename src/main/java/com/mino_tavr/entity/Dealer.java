@@ -24,4 +24,5 @@ public class Dealer {
 
     @Column(name = "department")
     private String Department;
+
 }
