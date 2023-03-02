@@ -22,7 +22,6 @@ public class CardNumber {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id_card_number;
 
-
     @Column(name = "number")
     String number;
 
