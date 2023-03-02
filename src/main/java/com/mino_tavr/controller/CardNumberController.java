@@ -36,5 +36,4 @@ public class CardNumberController {
         return cardNumberService.getCardNumberById(id_card_number);
     }
 
-
 }
