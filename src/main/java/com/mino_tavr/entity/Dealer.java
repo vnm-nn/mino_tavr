@@ -19,6 +19,12 @@ public class Dealer {
     @Column(name = "dealer_name")
     String dealer_name;
 
+    @Column(name = "member_surname")
+    String dealer_surname;
+
+    @Column(name = "member_patronymic")
+    String dealer_patronymic;
+
     @Column(name = "subdivision")
     String subdivision;
 
