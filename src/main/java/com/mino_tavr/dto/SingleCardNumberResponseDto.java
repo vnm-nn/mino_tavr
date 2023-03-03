@@ -14,7 +14,7 @@ public class SingleCardNumberResponseDto {
 
     Integer id_card_number;
     String number;
-    BufferedImage image;
+    byte[]  image;
     int device_type;
     int interaction_id;
     int reason_id;
