@@ -47,7 +47,6 @@ public class AllCardNumberResponseDto {
     String member_end_surname;
     String member_end_patronymic;
 
-
     Integer reason_id;
     String reason_type;
     String reason_number;
