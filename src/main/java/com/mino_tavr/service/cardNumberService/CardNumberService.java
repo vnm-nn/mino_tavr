@@ -1,4 +1,4 @@
-package com.mino_tavr.service;
+package com.mino_tavr.service.cardNumberService;
 
 import com.mino_tavr.dto.AddCardNumberRequestDto;
 import com.mino_tavr.dto.AllCardNumberResponseDto;
