@@ -1,5 +1,6 @@
 package com.mino_tavr.dto;
 
+import com.mino_tavr.entity.Interaction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ public class SingleCardNumberResponseDto {
     String number;
     byte[]  image;
     int device_type;
-    int interaction_id;
+    Interaction interaction;
     int reason_id;
     List<DescriptionResponseDto> description;
 
