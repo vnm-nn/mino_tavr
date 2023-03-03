@@ -19,7 +19,7 @@ public class Reason {
     Integer id_reason;
 
     @Column(name = "reason_type")
-    String reason_type;
+    int reason_type;
 
     @Column(name = "reason_number")
     String reason_number;

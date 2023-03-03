@@ -30,7 +30,7 @@ public class CardNumber {
     private byte[] image;
 
     @Column(name = "device_type")
-    String device_type;
+    int device_type;
 
     @Column(name = "interaction")
     Interaction interaction;

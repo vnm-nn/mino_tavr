@@ -17,7 +17,7 @@ public class AllCardNumberResponseDto {
     Integer id_card_number;
     String number;
     BufferedImage image;
-    String device_type;
+    int device_type;
 
     Integer interaction_id;
     String interaction_date_start;
@@ -48,7 +48,7 @@ public class AllCardNumberResponseDto {
     String member_end_patronymic;
 
     Integer reason_id;
-    String reason_type;
+    int reason_type;
     String reason_number;
 
     Integer description_id;
