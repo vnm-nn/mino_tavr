@@ -40,6 +40,6 @@ public class CardNumber {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "description")
-    List<Description> description;
+    List<Reason> reasons;
 
 }
