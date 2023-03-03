@@ -16,7 +16,7 @@ public class AllCardNumberResponseDto {
 
     Integer id_card_number;
     String number;
-    BufferedImage image;
+    byte[] image;
     int device_type;
 
     Integer interaction_id;
