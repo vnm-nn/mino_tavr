@@ -1,6 +1,7 @@
 package com.mino_tavr.dto;
 
 import com.mino_tavr.entity.Dealer;
+import com.mino_tavr.entity.Description;
 import com.mino_tavr.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -51,10 +53,6 @@ public class AllCardNumberResponseDto {
     int reason_type;
     String reason_number;
 
-    Integer description_id;
-    String description_name;
-    String serial_number;
-    String inventory_number;
-    String remark;
+    List<Description> descriptions;
 
 }
