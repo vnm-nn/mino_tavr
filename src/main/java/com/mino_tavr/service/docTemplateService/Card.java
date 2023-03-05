@@ -1,7 +1,6 @@
 package com.mino_tavr.service.docTemplateService;
 
-import com.mino_tavr.dto.SingleCardNumberResponseDto;
-import com.mino_tavr.service.docTemplateService.Card;
+import com.mino_tavr.dto.SingleModelResponseDto;
 import lombok.Getter;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
@@ -11,12 +10,14 @@ import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.xmlbeans.XmlException;
 import org.springframework.core.io.ClassPathResource;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Getter
 public abstract class Card {
-    private final SingleCardNumberResponseDto docData;
+    private final SingleModelResponseDto docData;
     private final XWPFDocument doc;
     private final List<XWPFTable> tables;
     private final String[] deviceType = {"Аудио", "Фото", "Видео", "Иное"};
@@ -32,7 +33,7 @@ public abstract class Card {
         runner.setFontSize(frontSize);
         runner.setText(val);
     }
-    protected Card(SingleCardNumberResponseDto docData, DocumentPath documentPath) throws IOException {
+    protected Card(SingleModelResponseDto docData, DocumentPath documentPath) throws IOException {
         if (docData == null)
             throw new IllegalArgumentException("ManufacturingDoc cannot be null");
 

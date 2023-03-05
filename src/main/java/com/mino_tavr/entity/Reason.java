@@ -1,27 +1,22 @@
 package com.mino_tavr.entity;
 
-
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "reason")
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "reason")
 public class Reason {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id_reason;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(name = "reason_type")
-    int reason_type;
-
+    private int reasonType;
     @Column(name = "reason_number")
-    String reason_number;
-
+    private String reasonNumber;
 }
+
