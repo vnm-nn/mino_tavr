@@ -1,10 +1,7 @@
 package com.mino_tavr.service.manufactureService;
 
 import com.mino_tavr.broker.ImageBroker;
-import com.mino_tavr.dto.AddModelRequestDto;
-import com.mino_tavr.dto.DescriptionDto;
-import com.mino_tavr.dto.EmployeeDto;
-import com.mino_tavr.dto.SingleModelResponseDto;
+import com.mino_tavr.dto.*;
 import com.mino_tavr.entity.*;
 import com.mino_tavr.repository.ModelRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,23 +32,34 @@ public class ManufactureServiceImpl implements ManufactureService {
                 descriptionData.getRemark()
         );
     }
+
+    private InteractionDto getInteractionDtoFromInteraction(Interaction interactionData) {
+        return new InteractionDto(
+                interactionData.getDate(),
+                new EmployeeDto( interactionData.getDealer().getName(),
+                        interactionData.getDealer().getSubdivision(),
+                        interactionData.getDealer().getDepartment()),
+                new EmployeeDto(interactionData.getMember().getName(),
+                        interactionData.getMember().getSubdivision(),
+                        interactionData.getMember().getDepartment()));
+    }
+
     @Override
     public void addModel(AddModelRequestDto dataOfNewModel) {
-        // Create Interaction field
-        Interaction interaction = new Interaction();
-        interaction.setMakingStartDate(dataOfNewModel.getMakingStartDate());
-        interaction.setMakingEndDate(Date.valueOf("0000-00-00"));  // Empty date of end making */
-        interaction.setDealerPassed(new Employee(dataOfNewModel.getDealer().getName(),
+        // Create Interaction begin & end field
+        var interactionBegin = new Interaction();
+        interactionBegin.setDate(dataOfNewModel.getMakingStartDate());
+        interactionBegin.setDealer(new Employee(dataOfNewModel.getDealer().getName(),
                 dataOfNewModel.getDealer().getSubdivision(),
                 dataOfNewModel.getDealer().getDepartment()));
-        interaction.setMemberAccepted(new Employee(dataOfNewModel.getMemberName(),
+        interactionBegin.setMember(new Employee(dataOfNewModel.getMemberName(),
                 "25",
                 "Т"));
 
-        // Empty Dealer & Member END*/
-        final var balnkEmployee = new Employee("-", "-", "-");
-        interaction.setDealerAccepted(balnkEmployee);
-        interaction.setMemberPassed(balnkEmployee);
+        var interactionEnd = new Interaction();
+        interactionEnd.setDate(Date.valueOf("0000-00-00"));
+        interactionEnd.setDealer(new Employee("-", "-", "-"));
+        interactionEnd.setMember(new Employee("-", "-", "-"));
 
         // Create Reason field
         Reason reason = new Reason();
@@ -62,9 +70,11 @@ public class ManufactureServiceImpl implements ManufactureService {
         Model model = new Model();
         model.setImg(imageBroker.getDummyImageModelPreview());
         model.setDeviceType(dataOfNewModel.getDeviceType());
-        model.setInteraction(interaction);
+        model.setInteractionBegin(interactionBegin);
+        model.setInteractionEnd(interactionEnd);
         model.setReason(reason);
-        /** Create Description fields and set to model */
+
+        //Create Description fields and set to model
         model.setDescriptions(dataOfNewModel.getDescriptions().stream()
                 .map(this::getDescriptionFromDescriptionDto)
                 .collect(Collectors.toList()));
@@ -74,37 +84,16 @@ public class ManufactureServiceImpl implements ManufactureService {
     @Override
     public SingleModelResponseDto getModelById(Integer modelId) {
         // TODO Create exception 404 Not Found
-        final var model = modelRepository.findById(modelId).orElseThrow(IllegalArgumentException::new);
-        final var singleModel = new SingleModelResponseDto();
+        var model = modelRepository.findById(modelId).orElseThrow(IllegalArgumentException::new);
+        var singleModel = new SingleModelResponseDto();
 
         singleModel.setId(model.getId());
         singleModel.setImg(model.getImg());
         singleModel.setDeviceType(model.getDeviceType());
         singleModel.setReason(model.getReason().getReasonType());
         singleModel.setReasonNumber(model.getReason().getReasonNumber());
-        singleModel.setMakingStartDate(model.getInteraction().getMakingStartDate());
-        singleModel.setMakingEndDate(model.getInteraction().getMakingEndDate());
-
-        singleModel.setDealerPassed(new EmployeeDto(
-                model.getInteraction().getDealerPassed().getName(),
-                model.getInteraction().getDealerPassed().getSubdivision(),
-                model.getInteraction().getDealerPassed().getDepartment()
-        ));
-        singleModel.setMemberAccept(new EmployeeDto(
-                model.getInteraction().getMemberAccepted().getName(),
-                model.getInteraction().getMemberAccepted().getSubdivision(),
-                model.getInteraction().getMemberAccepted().getDepartment()
-        ));
-        singleModel.setMemberPassed(new EmployeeDto(
-                model.getInteraction().getMemberPassed().getName(),
-                model.getInteraction().getMemberPassed().getSubdivision(),
-                model.getInteraction().getMemberPassed().getDepartment()
-        ));
-        singleModel.setDealerAccept(new EmployeeDto(
-                model.getInteraction().getDealerAccepted().getName(),
-                model.getInteraction().getDealerAccepted().getSubdivision(),
-                model.getInteraction().getDealerAccepted().getDepartment()
-        ));
+        singleModel.setInteractionBegin(getInteractionDtoFromInteraction(model.getInteractionBegin()));
+        singleModel.setInteractionEnd(getInteractionDtoFromInteraction(model.getInteractionEnd()));
 
         singleModel.setDescriptions(model.getDescriptions().stream()
                 .map(this::getDescriptionDtoFromDescription)

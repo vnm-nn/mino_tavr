@@ -38,7 +38,8 @@ public class ManufacturingCard extends Card {
         final int fs = 12;
         int rowPosition = 3;
 
-        for (final var interaction : List.of(docData.getDealerPassed(), docData.getMemberAccept())) {
+        for (final var interaction : List.of(docData.getInteractionBegin().getDealer(),
+                docData.getInteractionBegin().getMember())) {
             final var nameCell = tables.get(1).getRow(rowPosition).getCell(1);
             writeField(nameCell, interaction.getName(), fs);
             final var managementCell = tables.get(1).getRow(rowPosition).getCell(2);
@@ -49,7 +50,8 @@ public class ManufacturingCard extends Card {
         }
 
         rowPosition = 3;
-        for (final var interaction : List.of(docData.getMemberPassed(), docData.getDealerAccept())) {
+        for (final var interaction : List.of(docData.getInteractionEnd().getMember(),
+                docData.getInteractionEnd().getDealer())) {
             final var nameCell = tables.get(1).getRow(rowPosition).getCell(4);
             writeField(nameCell, interaction.getName(), fs);
             final var managementCell = tables.get(1).getRow(rowPosition).getCell(5);
@@ -60,9 +62,9 @@ public class ManufacturingCard extends Card {
         }
 
         final var dateBegin = tables.get(1).getRow(5).getCell(1);
-        writeField(dateBegin, docData.getMakingStartDate().toString(), fs);
+        writeField(dateBegin, docData.getInteractionBegin().getDate().toString(), fs);
         final var dateEnd = tables.get(1).getRow(5).getCell(2);
-        writeField(dateEnd, docData.getMakingEndDate().toString(), fs);
+        writeField(dateEnd, docData.getInteractionEnd().getDate().toString(), fs);
     }
 
     private void writeWorkReasonField(List<XWPFTable> tables, SingleModelResponseDto docData) {

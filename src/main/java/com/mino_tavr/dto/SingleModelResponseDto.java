@@ -14,11 +14,7 @@ public class SingleModelResponseDto {
     private int deviceType;
     private int reason;
     private String reasonNumber;
-    private Date makingStartDate;
-    private Date makingEndDate;
-    private EmployeeDto dealerPassed;
-    private EmployeeDto memberAccept;
-    private EmployeeDto memberPassed;
-    private EmployeeDto dealerAccept;
+    private InteractionDto interactionBegin;
+    private InteractionDto interactionEnd;
     private List<DescriptionDto> descriptions;
 }

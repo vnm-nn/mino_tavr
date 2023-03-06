@@ -18,12 +18,13 @@ public class TicketCard extends Card {
     }
     private void writeDateField(List<XWPFTable> tables, SingleModelResponseDto docData) {
         final var dateBegin = tables.get(1).getRow(2).getCell(0);
-        writeField(dateBegin, docData.getMakingStartDate().toString(), 14);
+        writeField(dateBegin, docData.getInteractionBegin().getDate().toString(), 14);
     }
     private void writeInteractionField(List<XWPFTable> tables, SingleModelResponseDto docData) {
         final int fs = 12;
         int rowPosition = 2;
-        for(final var interaction : List.of(docData.getDealerPassed(), docData.getMemberAccept())) {
+        for(final var interaction : List.of(docData.getInteractionBegin().getDealer(),
+                docData.getInteractionBegin().getMember())) {
             final var nameCell = tables.get(6).getRow(rowPosition).getCell(0);
             writeField(nameCell, interaction.getName(), fs);
             final var managementCell = tables.get(6).getRow(rowPosition).getCell(1);

@@ -22,8 +22,11 @@ public class Model {
     @Column(name = "device_type")
     private int deviceType;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "interaction_id")
-    private Interaction interaction;
+    @JoinColumn(name = "interaction_begin_id")
+    private Interaction interactionBegin;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "interaction_end_id")
+    private Interaction interactionEnd;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reason_id")
     private Reason reason;

@@ -19,20 +19,11 @@ public class Interaction {
     private Integer id;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "making_date_start")
-    private Date makingStartDate;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Column(name = "making_date_end")
-    private Date makingEndDate;
+    private Date date;
     @OneToOne
-    @JoinColumn(name = "dealer_passed_id")
-    private Employee dealerPassed;
+    @JoinColumn(name = "dealer_id")
+    private Employee dealer;
     @OneToOne
-    @JoinColumn(name = "member_accepted_id")
-    private Employee memberAccepted;
-    @OneToOne
-    @JoinColumn(name = "member_passed_id")
-    private Employee memberPassed;
-    @OneToOne
-    @JoinColumn(name = "dealer_accepted_id")
-    private Employee dealerAccepted;
+    @JoinColumn(name = "member_id")
+    private Employee member;
 }
