@@ -49,9 +49,9 @@ public class ManufactureServiceImpl implements ManufactureService {
                 "Т"));
 
         // Empty Dealer & Member END*/
-        final var balnkEmployee = new Employee("-", "-", "-");
-        interaction.setDealerAccepted(balnkEmployee);
-        interaction.setMemberPassed(balnkEmployee);
+        final var blankEmployee = new Employee("-", "-", "-");
+        interaction.setDealerAccepted(blankEmployee);
+        interaction.setMemberPassed(blankEmployee);
 
         // Create Reason field
         Reason reason = new Reason();
@@ -64,7 +64,7 @@ public class ManufactureServiceImpl implements ManufactureService {
         model.setDeviceType(dataOfNewModel.getDeviceType());
         model.setInteraction(interaction);
         model.setReason(reason);
-        /** Create Description fields and set to model */
+        /* Create Description fields and set to model */
         model.setDescriptions(dataOfNewModel.getDescriptions().stream()
                 .map(this::getDescriptionFromDescriptionDto)
                 .collect(Collectors.toList()));
