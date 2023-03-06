@@ -1,34 +1,25 @@
 package com.mino_tavr.entity;
 
-
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "description")
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "description")
 public class Description {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_description")
-    int id_description;
-
-    @Column(name = "description_name")
-    String description_name;
-
+    private Integer id;
+    @Column(name = "name")
+    private String name;
     @Column(name = "serial_number")
-    String serial_number;
-
+    private String serialNumber;
     @Column(name = "inventory_number")
-    String inventory_number;
-
+    private String inventoryNumber;
     @Column(name = "remark")
-    String remark;
-
+    private String remark;
 }

@@ -1,9 +1,9 @@
 package com.mino_tavr.repository;
 
-import com.mino_tavr.entity.CardNumber;
+import com.mino_tavr.entity.Model;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CardNumberRepository extends JpaRepository<CardNumber, Integer> {
+public interface ModelRepository extends JpaRepository<Model, Integer> {
 }
