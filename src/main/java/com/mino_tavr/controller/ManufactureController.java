@@ -34,8 +34,6 @@ public class ManufactureController {
         return manufacture.getModelById(id);
     }
 
-// TODO it is necessary to implement data transfer from the database by DEVICE_TYPE following the example below
-
     @GetMapping("/models/{type}")
     public List<SingleModelResponseDto> getModelsByType(@PathVariable Integer type) {
         return manufacture.getModelsByDeviceType(type);
@@ -46,7 +44,7 @@ public class ManufactureController {
     public ResponseEntity<InputStreamResource> getDocTemplate(
             @PathVariable Integer name, @PathVariable Integer id) throws IOException, XmlException, InvalidFormatException {
         var modelData = manufacture.getModelById(id);
-        final var card = switch(name) {
+        final var card = switch (name) {
             case 1 -> new TicketCard(modelData, DocumentPath.TICKET);
             case 2 -> new ManufacturingCard(modelData, DocumentPath.MANUFACTURING);
             default -> throw new IllegalStateException("Unexpected value: " + id);
