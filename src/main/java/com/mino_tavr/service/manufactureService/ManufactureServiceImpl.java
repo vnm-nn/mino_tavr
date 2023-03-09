@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +37,8 @@ public class ManufactureServiceImpl implements ManufactureService {
 
     private InteractionDto getInteractionDtoFromInteraction(Interaction interactionData) {
         return new InteractionDto(
-                interactionData.getDate(),
-                new EmployeeDto( interactionData.getDealer().getName(),
+                Optional.ofNullable(interactionData.getDate()).map(Date::toString).orElse("-"),
+                new EmployeeDto(interactionData.getDealer().getName(),
                         interactionData.getDealer().getSubdivision(),
                         interactionData.getDealer().getDepartment()),
                 new EmployeeDto(interactionData.getMember().getName(),
@@ -44,51 +46,11 @@ public class ManufactureServiceImpl implements ManufactureService {
                         interactionData.getMember().getDepartment()));
     }
 
-    @Override
-    public void addModel(AddModelRequestDto dataOfNewModel) {
-        // Create Interaction begin & end field
-        var interactionBegin = new Interaction();
-        interactionBegin.setDate(dataOfNewModel.getMakingStartDate());
-        interactionBegin.setDealer(new Employee(dataOfNewModel.getDealer().getName(),
-                dataOfNewModel.getDealer().getSubdivision(),
-                dataOfNewModel.getDealer().getDepartment()));
-        interactionBegin.setMember(new Employee(dataOfNewModel.getMemberName(),
-                "25",
-                "Т"));
-
-        var interactionEnd = new Interaction();
-        interactionEnd.setDate(Date.valueOf("0000-00-00"));
-        interactionEnd.setDealer(new Employee("-", "-", "-"));
-        interactionEnd.setMember(new Employee("-", "-", "-"));
-
-        // Create Reason field
-        Reason reason = new Reason();
-        reason.setReasonType(dataOfNewModel.getReason());
-        reason.setReasonNumber(dataOfNewModel.getReasonNumber());
-
-        // Create Model and save data(Model) to repository(DB)
-        Model model = new Model();
-        model.setImg(imageBroker.getDummyImageModelPreview());
-        model.setDeviceType(dataOfNewModel.getDeviceType());
-        model.setInteractionBegin(interactionBegin);
-        model.setInteractionEnd(interactionEnd);
-        model.setReason(reason);
-
-        //Create Description fields and set to model
-        model.setDescriptions(dataOfNewModel.getDescriptions().stream()
-                .map(this::getDescriptionFromDescriptionDto)
-                .collect(Collectors.toList()));
-
-        modelRepository.save(model);
-    }
-    @Override
-    public SingleModelResponseDto getModelById(Integer modelId) {
-        // TODO Create exception 404 Not Found
-        var model = modelRepository.findById(modelId).orElseThrow(IllegalArgumentException::new);
+    private SingleModelResponseDto getSingleModel(Model model) {
         var singleModel = new SingleModelResponseDto();
 
         singleModel.setId(model.getId());
-        singleModel.setImg(model.getImg());
+        singleModel.setImage(model.getImage());
         singleModel.setDeviceType(model.getDeviceType());
         singleModel.setReason(model.getReason().getReasonType());
         singleModel.setReasonNumber(model.getReason().getReasonNumber());
@@ -99,8 +61,57 @@ public class ManufactureServiceImpl implements ManufactureService {
                 .map(this::getDescriptionDtoFromDescription)
                 .collect(Collectors.toList())
         );
-
         return singleModel;
+    }
+
+    @Override
+    public ModelIdResponseDto addModel(AddModelRequestDto dataOfNewModel) {
+        // Create Interaction begin & end field
+        var interactionBegin = new Interaction();
+        interactionBegin.setDate(dataOfNewModel.getDate());
+        interactionBegin.setDealer(new Employee(dataOfNewModel.getDealer().getName(),
+                dataOfNewModel.getDealer().getSubdivision(),
+                dataOfNewModel.getDealer().getDepartment()));
+        interactionBegin.setMember(new Employee(dataOfNewModel.getMemberName(),
+                "25",
+                "Т"));
+
+        // Date is empty (null)
+        var interactionEnd = new Interaction();
+        interactionEnd.setDealer(new Employee("-", "-", "-"));
+        interactionEnd.setMember(new Employee("-", "-", "-"));
+
+        // Create Reason field
+        Reason reason = new Reason();
+        reason.setReasonType(dataOfNewModel.getReason());
+        reason.setReasonNumber(dataOfNewModel.getReasonNumber());
+
+        // Create Model and save data(Model) to repository(DB)
+        Model model = new Model();
+        model.setImage(imageBroker.getDummyImageModelPreview());
+        model.setDeviceType(dataOfNewModel.getDeviceType());
+        model.setInteractionBegin(interactionBegin);
+        model.setInteractionEnd(interactionEnd);
+        model.setReason(reason);
+
+        //Create Description fields and set to model
+        model.setDescriptions(dataOfNewModel.getDescriptions().stream()
+                .map(this::getDescriptionFromDescriptionDto)
+                .collect(Collectors.toList()));
+
+        return new ModelIdResponseDto(modelRepository.save(model).getId());
+    }
+    @Override
+    public SingleModelResponseDto getModelById(Integer modelId) {
+        // TODO Create exception 404 Not Found
+        var model = modelRepository.findById(modelId).orElseThrow(IllegalArgumentException::new);
+        return getSingleModel(model);
+    }
+
+    @Override
+    public List<SingleModelResponseDto> getModelsByDeviceType(Integer type) {
+        List<Model> allByType = modelRepository.findAllByDeviceType(type);
+        return allByType.stream().map(this::getSingleModel).collect(Collectors.toList());
     }
 }
 

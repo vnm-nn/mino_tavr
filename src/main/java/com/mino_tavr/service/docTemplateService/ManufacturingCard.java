@@ -27,9 +27,9 @@ public class ManufacturingCard extends Card {
 
         final var image = tables.get(0).getRow(0).getCell(1);
         image.addParagraph().createRun().addPicture(
-                new ByteArrayInputStream(docData.getImg()),
+                new ByteArrayInputStream(docData.getImage()),
                 Document.PICTURE_TYPE_JPEG,
-                Arrays.toString(docData.getImg()),
+                Arrays.toString(docData.getImage()),
                 Units.toEMU(200),
                 Units.toEMU(150));
     }
@@ -38,8 +38,8 @@ public class ManufacturingCard extends Card {
         final int fs = 12;
         int rowPosition = 3;
 
-        for (final var interaction : List.of(docData.getInteractionBegin().getDealer(),
-                docData.getInteractionBegin().getMember())) {
+        for (final var interaction : List.of( docData.getInteractionBegin().getMember(),
+                docData.getInteractionBegin().getDealer())) {
             final var nameCell = tables.get(1).getRow(rowPosition).getCell(1);
             writeField(nameCell, interaction.getName(), fs);
             final var managementCell = tables.get(1).getRow(rowPosition).getCell(2);

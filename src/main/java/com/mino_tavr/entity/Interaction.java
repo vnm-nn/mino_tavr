@@ -17,13 +17,13 @@ public class Interaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Column(name = "making_date_start")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date")
     private Date date;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "dealer_id")
     private Employee dealer;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "member_id")
     private Employee member;
 }

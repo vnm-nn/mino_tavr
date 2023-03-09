@@ -14,7 +14,7 @@ public class AddModelRequestDto {
     private String reasonNumber;
     private EmployeeDto dealer;
     private String memberName;
-    private Date makingStartDate;
+    private Date date;
     private Date notification;
     private List<DescriptionDto> descriptions;
 }
