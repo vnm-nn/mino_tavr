@@ -1,6 +1,7 @@
 package com.mino_tavr.controller;
 
 import com.mino_tavr.dto.AddModelRequestDto;
+import com.mino_tavr.dto.ModelIdResponseDto;
 import com.mino_tavr.dto.SingleModelResponseDto;
 import com.mino_tavr.service.docTemplateService.DocumentPath;
 import com.mino_tavr.service.docTemplateService.ManufacturingCard;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/manufacture")
@@ -23,8 +25,8 @@ public class ManufactureController {
     private final ManufactureService manufacture;
 
     @PostMapping("/add")
-    public void addModel(@RequestBody AddModelRequestDto modelData) {
-        manufacture.addModel(modelData);
+    public ModelIdResponseDto addModel(@RequestBody AddModelRequestDto modelData) {
+        return manufacture.addModel(modelData);
     }
 
     @GetMapping("/{id}")
@@ -34,11 +36,10 @@ public class ManufactureController {
 
 // TODO it is necessary to implement data transfer from the database by DEVICE_TYPE following the example below
 
-  //  @GetMapping("/photo")
-   // public List<AllCardNumberResponseDto> getAllCardNumber() {
-     //   return cardNumberService.getAllCardNumber();
-
-    //}
+    @GetMapping("/models/{type}")
+    public List<SingleModelResponseDto> getModelsByType(@PathVariable Integer type) {
+        return manufacture.getModelsByDeviceType(type);
+    }
 
     @GetMapping(value = "/doc/{name}/{id}",
             produces = "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
