@@ -76,10 +76,13 @@ public class ManufactureServiceImpl implements ManufactureService {
                 "25",
                 "Т"));
 
+
         // Date is empty (null)
         var interactionEnd = new Interaction();
         interactionEnd.setDealer(new Employee("-", "-", "-"));
         interactionEnd.setMember(new Employee("-", "-", "-"));
+
+      
 
         // Create Reason field
         Reason reason = new Reason();
@@ -94,7 +97,9 @@ public class ManufactureServiceImpl implements ManufactureService {
         model.setInteractionEnd(interactionEnd);
         model.setReason(reason);
 
-        //Create Description fields and set to model
+
+        /* Create Description fields and set to model */
+
         model.setDescriptions(dataOfNewModel.getDescriptions().stream()
                 .map(this::getDescriptionFromDescriptionDto)
                 .collect(Collectors.toList()));
