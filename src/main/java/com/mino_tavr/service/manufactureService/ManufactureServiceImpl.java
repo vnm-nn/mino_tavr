@@ -91,6 +91,7 @@ public class ManufactureServiceImpl implements ManufactureService {
 
         // Create Model and save data(Model) to repository(DB)
         Model model = new Model();
+        model.setDone(false);
         model.setImage(imageBroker.getDummyImageModelPreview());
         model.setDeviceType(dataOfNewModel.getDeviceType());
         model.setInteractionBegin(interactionBegin);

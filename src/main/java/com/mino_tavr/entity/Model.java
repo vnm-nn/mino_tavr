@@ -16,6 +16,10 @@ public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "done")
+    boolean done;
+    @Column(name = "note")
+    String note;
     @Lob
     @Column(name = "image", columnDefinition = "BLOB")
     private byte[] image;
