@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Cubateka</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/icons8-вид-слева-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/icons8-вид-слева-32.png">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Averia+Libre&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans&amp;display=swap">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/Animated-Pretty-Product-List-v12-Animated-Pretty-Product-List.css">
+    <link rel="stylesheet" href="../assets/css/Bootstrap-4---Photo-Gallery.css">
+    <link rel="stylesheet" href="../assets/css/Drag-and-Drop-Multiple-File-Form-Input-upload-Advanced.css">
+    <link rel="stylesheet" href="../assets/css/Drag-Drop-File-Input-Upload.css">
+    <link rel="stylesheet" href="../assets/css/Filter.css">
+    <link rel="stylesheet" href="../assets/css/Footer-Clean-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../assets/css/MUSA_product-display-product-display.css">
+    <link rel="stylesheet" href="../assets/css/MUSA_product-display.css">
+    <link rel="stylesheet" href="../assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="../assets/css/Search-Input-Responsive-with-Icon.css">
+    <link rel="stylesheet" href="../assets/css/select.css">
+    <link rel="stylesheet" href="../assets/css/VentasPro-Login.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body style="background: rgb(45,44,56);border-color: var(--bs-navbar-color);">
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalAdd">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="background: rgb(45,44,56);">
+                    <div>
+                        <div class="border rounded border-warning" style="text-align: center;">
+                            <h1 class="fs-2 text-center display-5 fw-bold lh-1 mb-3" style="font-family: 'Abril Fatface', serif;margin-bottom: 2px;padding-bottom: 0px;margin-top: 14px;color: var(--bs-modal-bg);"><i class="far fa-edit" style="font-size: 28px;color: var(--bs-yellow);"></i>&nbsp;Новая запись</h1>
+                        </div>
+                        <div>
+                            <div class="row" style="margin-top: 6px;">
+                                <div class="col">
+                                    <form>
+                                        <div class="field"><select class="form-select" id="deviceType" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);text-align: center;font-size: 19px;font-family: 'Abril Fatface', serif;">
+                                                <optgroup label="Типы устройств">
+                                                    <option value="0">Аудио</option>
+                                                    <option value="1" selected="">Фото</option>
+                                                    <option value="2">Видео</option>
+                                                    <option value="3">Иное</option>
+                                                </optgroup>
+                                            </select><label class="form-label mb-0" for="float-input" style="margin-bottom: 8px;margin-top: 7px;font-size: 19px;font-family: 'Abril Fatface', serif;color: var(--bs-modal-bg);text-align: center;">Тип устройства</label></div>
+                                    </form>
+                                </div>
+                                <div class="col" style="font-family: 'Noto Sans', sans-serif;">
+                                    <form>
+                                        <div class="field"><select class="form-select" id="reason" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);text-align: center;font-size: 19px;font-family: 'Abril Fatface', serif;">
+                                                <optgroup label="Виды оснований">
+                                                    <option value="0" selected="">Журнал</option>
+                                                    <option value="1">Служебная записка</option>
+                                                    <option value="2">Иное</option>
+                                                </optgroup>
+                                            </select><label class="form-label mb-0" for="float-input" style="margin-top: 7px;font-size: 19px;font-family: 'Abril Fatface', serif;color: var(--bs-modal-bg);text-align: center;">Основание проведения работ</label></div>
+                                    </form>
+                                    <form>
+                                        <div class="text-start custom-control custom-radio" style="font-family: 'Kaushan Script', serif;font-size: 20px;margin-top: 8px;">
+                                            <div class="form-group mb-3" style="margin-top: 23px;">
+                                                <div class="input-group mb-4"><input class="form-control" type="text" id="reasonNumber" style="font-family: 'Abril Fatface', serif;text-align: left;background: var(--bs-border-color-translucent);color: var(--bs-modal-bg);margin-top: -13px;margin-bottom: -11px;font-size: 19px;margin-left: 1px;border-radius: 6px;" placeholder="Укажите номер основания"></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div style="margin-top: -39px;">
+                                <p class="fs-3" style="margin-top: 43px;font-family: 'Abril Fatface', serif;color: var(--bs-modal-bg);margin-bottom: 6px;text-align: center;">Передал материальные ценности исполнителю</p>
+                                <div class="row" style="margin-top: 0px;margin-bottom: 0px;">
+                                    <div class="col-5 text-center"><label class="form-label text-center mb-0" for="float-input" style="font-size: 19px;font-family: 'Abril Fatface', serif;text-align: center;color: var(--bs-modal-bg);">Сотрудник</label>
+                                        <div class="text-start custom-control custom-radio" style="font-family: 'Abril Fatface', serif;font-size: 20px;margin-top: -10px;">
+                                            <form>
+                                                <div class="form-group mb-3" style="margin-top: 23px;font-family: 'Noto Sans', sans-serif;">
+                                                    <div class="input-group mb-4"><input class="form-control" type="text" id="name" style="font-family: 'Abril Fatface', serif;text-align: left;background: var(--bs-border-color-translucent);color: var(--bs-modal-bg);margin-top: -13px;margin-bottom: -11px;font-size: 16px;margin-left: 1px;border-radius: 6px;" placeholder="ФИО"></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <form>
+                                            <div class="field"><select class="form-select" id="subdivision" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);text-align: center;font-family: 'Abril Fatface', serif;font-size: 20px;">
+                                                    <optgroup label="Отделы">
+                                                        <option value="23" selected="">23</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                    </optgroup>
+                                                </select><label class="form-label mb-0" for="float-input" style="font-size: 19px;font-family: 'Abril Fatface', serif;text-align: center;color: var(--bs-modal-bg);">Отдел</label></div>
+                                        </form>
+                                    </div>
+                                    <div class="col-2 text-center">
+                                        <form>
+                                            <div class="field"><select class="form-select" id="department" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);text-align: center;font-family: 'Abril Fatface', serif;font-size: 20px;">
+                                                    <optgroup label="Управления">
+                                                        <option value="У" selected="">У</option>
+                                                        <option value="М">М</option>
+                                                        <option value="Н">Н</option>
+                                                        <option value="K">K</option>
+                                                    </optgroup>
+                                                </select><label class="form-label mb-0" for="float-input" style="font-size: 19px;font-family: 'Abril Fatface', serif;text-align: center;color: var(--bs-modal-bg);">Управление</label></div>
+                                        </form>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <form>
+                                            <div class="field"><input class="form-control" id="dateWrite" type="date" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);font-family: 'Abril Fatface', serif;font-weight: bold;margin-left: -1px;border-radius: 6px;font-size: 20px;margin-top: 0px;border-width: 1px;border-color: var(--bs-modal-bg);height: 44px;"><label class="form-label mb-0" for="float-input" style="font-family: 'Abril Fatface', serif;font-size: 19px;color: var(--bs-modal-bg);">Дата</label></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <legend class="fs-3 text-center" style="font-family: 'Abril Fatface', serif;color: var(--bs-modal-bg);padding-top: 0px;padding-bottom: 4px;margin-top: 0px;margin-bottom: -10px;">Состав изделия</legend>
+                            <div id="device">
+                                <div class="row" id="deviceRow" style="margin-top: 1px;margin-bottom: 31px;">
+                                    <div class="col-2">
+                                        <p class="fs-1" id="rowNumber" style="margin-bottom: 6px;font-family: 'Kaushan Script', serif;color: var(--bs-yellow);margin-top: 95px;">1</p>
+                                    </div>
+                                    <div class="col-lg-8" style="border-radius: 6px;border: 1px solid var(--bs-modal-bg);margin-top: 9px;">
+                                        <div>
+                                            <form style="margin-top: 10px;background: rgb(45,44,56);color: var(--bs-modal-bg);">
+                                                <div class="form-group mb-3"><input class="form-control" type="text" id="deviceName" style="font-family: 'Abril Fatface', serif;text-align: left;background: var(--bs-border-color-translucent);color: var(--bs-modal-bg);font-size: 19px;margin-left: 1px;border-radius: 6px;margin-bottom: -7px;margin-top: 16px;" placeholder="Наименование устройства"></div>
+                                                <div class="form-group mb-3"><input class="form-control" type="text" id="serialNumber" style="font-family: 'Abril Fatface', serif;text-align: left;background: var(--bs-border-color-translucent);color: var(--bs-modal-bg);font-size: 19px;margin-left: 1px;border-radius: 6px;margin-top: 5px;margin-bottom: -8px;" placeholder="Серийный номер устройства"></div>
+                                                <div class="form-group mb-3"><input class="form-control" type="text" id="inventoryNumber" style="font-family: 'Abril Fatface', serif;text-align: left;background: var(--bs-border-color-translucent);color: var(--bs-modal-bg);font-size: 19px;margin-left: 1px;border-radius: 6px;margin-top: 7px;padding-bottom: 10px;margin-bottom: -8px;" placeholder="Инвентарный номер устройства"></div>
+                                                <div class="form-group mb-3"><textarea class="form-control" id="remark" placeholder="Примичание" style="background: var(--bs-border-color-translucent);margin-top: 17px;border-radius: 6px;font-family: 'Abril Fatface', serif;font-size: 19px;color: var(--bs-modal-bg);"></textarea></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+                            <div class="text-end" style="margin-top: 14px;margin-bottom: 31px;">
+                                <div class="row">
+                                    <div class="col-2 col-xl-2">
+                                        <div class="field"></div>
+                                    </div>
+                                    <div class="col-2 col-xl-3 text-center" style="padding-top: 0px;margin-top: -15px;">
+                                        <div class="field"></div>
+                                    </div>
+                                    <div class="col-6 col-lg-7 col-xl-6 text-center" style="margin-top: -14px;"><button class="btn btn-secondary" id="addWrite" type="button" style="color: var(--bs-modal-bg);background: var(--bs-border-color-translucent);margin-bottom: -24px;margin-top: -6px;margin-right: 10px;font-family: 'Noto Sans', sans-serif;"><i class="fas fa-plus" style="color: var(--bs-yellow);font-size: 16px;"></i>&nbsp;Добавить ячейку</button><button class="btn btn-secondary" id="delWrite" type="button" style="color: var(--bs-modal-bg);background: var(--bs-border-color-translucent);margin-bottom: -24px;margin-top: -6px;font-family: 'Noto Sans', sans-serif;"><i class="fas fa-trash" style="color: var(--bs-yellow);font-size: 16px;"></i>&nbsp;Удалить ячейку</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border rounded" style="margin-top: 33px;">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-center" style="padding-bottom: 0px;margin-bottom: -1px;font-family: 'Noto Sans', sans-serif;margin-top: 1px;padding-top: 9px;color: var(--bs-modal-bg);"><i class="far fa-clock text-center" style="color: var(--bs-yellow);font-size: 20px;margin-bottom: 5px;"></i>&nbsp;Установить напоминание</p>
+                                <form><input class="form-control" id="notification" type="date" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);font-family: 'Abril Fatface', serif;font-weight: bold;border-radius: 6px;font-size: 20px;border-width: 1px;border-color: var(--bs-modal-bg);padding-bottom: 5px;margin-bottom: 10px;margin-top: 10px;margin-left: 12px;height: 44px;"></form>
+                            </div>
+                            <div class="col">
+                                <p class="text-center" style="padding-bottom: 0px;margin-bottom: -1px;font-family: 'Noto Sans', sans-serif;margin-top: 1px;padding-top: 9px;margin-right: 23px;color: var(--bs-modal-bg);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor" class="text-center" style="color: var(--bs-yellow);font-size: 20px;margin-bottom: 5px;">
+                                        <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                                        <path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path>
+                                    </svg>&nbsp;Материальные ценности принял</p>
+                                <form style="margin-right: 16px;">
+                                    <div class="field"><select class="form-select" id="memberName" style="background: var(--bs-border-color-translucent);color: var(--bs-gray-400);text-align: center;font-size: 20px;font-family: 'Abril Fatface', serif;margin-top: 10px;">
+                                            <optgroup label="Сотрудники">
+                                                <option value="Кострюков">Кострюков</option>
+                                                <option value="Лобанов">Лобанов</option>
+                                                <option value="Жгулев">Жгулев</option>
+                                                <option value="Жмышенко">Жмышенко</option>
+                                            </optgroup>
+                                        </select></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center" style="background: rgb(45,44,56);border-width: 1px;"><button class="btn btn-secondary" type="button" data-bs-dismiss="modal" style="background: var(--bs-border-color-translucent);"><i class="far fa-window-close" style="color: var(--bs-red);"></i>&nbsp;Закрыть</button><button class="btn btn-secondary" id="addButton" type="submit" style="background: var(--bs-border-color-translucent);"><i class="fas fa-save" style="color: var(--bs-warning);"></i>&nbsp;Сохранить</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalSaveTicket">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="background: rgb(45,44,56);">
+                    <div>
+                        <div class="border rounded border-warning" style="text-align: center;">
+                            <h1 class="fs-2 text-center display-5 fw-bold lh-1 mb-3" style="font-family: 'Noto Sans', sans-serif;margin-bottom: 2px;padding-bottom: 0px;margin-top: 14px;color: var(--bs-modal-bg);"><i class="fas fa-check" style="font-size: 28px;color: var(--bs-yellow);"></i>&nbsp;Запись успешно сохранена</h1>
+                        </div>
+                        <div class="row" style="margin-top: 24px;margin-bottom: 22px;">
+                            <div class="col-2"></div>
+                            <div class="col">
+                                <p class="fs-3" style="padding-top: 0px;margin-top: -1px;margin-bottom: 8px;color: var(--bs-modal-bg);font-family: 'Abril Fatface', serif;text-align: center;">Хотите сохранить отрывной талон?</p>
+                                <div class="text-center"><button class="btn btn-secondary" id="getDocTicket" type="button" data-bs-toggle="modal" style="background: var(--bs-border-color-translucent);margin-right: 129px;font-size: 26px;font-family: 'Abril Fatface', serif;"><i class="fas fa-download" style="color: var(--bs-warning);font-size: 22px;"></i>&nbsp; &nbsp;ДА</button><button class="btn btn-secondary" type="button" data-bs-dismiss="modal" style="background: var(--bs-border-color-translucent);font-size: 26px;font-family: 'Abril Fatface', serif;"><i class="fas fa-window-close" style="color: var(--bs-red);font-size: 22px;"></i>&nbsp; &nbsp;НЕ</button></div>
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top py-3" id="mainNav" style="background: #212529;">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="../index.html"><i class="icon ion-cube" style="width: 35px;height: 17.2px;transform: perspective(0px);padding-bottom: 0px;padding-top: 0px;font-size: 30px;color: var(--bs-yellow);margin-top: -21px;margin-left: -1px;margin-right: -2px;margin-bottom: 9px;"></i><span style="font-family: 'Kaushan Script', serif;font-size: 25px;margin-left: 4px;"><span style="color: rgb(254, 209, 54);">CubaTeka</span></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mx-auto"></ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../about.html" style="margin-right: 20px;font-family: 'Kaushan Script', serif;">About CubaTeka</a></li>
+                </ul><button class="btn btn-secondary" type="button" style="background: var(--bs-border-color-translucent);"><i class="fas fa-sign-out-alt" style="color: var(--bs-yellow);"></i><span style="font-family: 'Noto Sans', sans-serif;color: rgba(255,255,255,0.55);">&nbsp;Выход есть</span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="container text-light py-4 py-xl-5">
+        <div class="row mb-5" style="padding-bottom: 0px;margin-bottom: 0px;">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 style="font-size: 42.1px;color: var(--bs-white);font-family: 'Abril Fatface', serif;">Изготовленные модели</h2>
+                <p style="font-family: 'Kaushan Script', serif;font-size: 23px;color: var(--bs-gray-500);">Здесь Вы можете ознакомиться с лучшими моделями или добавить свою, ведь CubaTeka это так просто!</p>
+            </div>
+        </div>
+        <div class="col text-center" style="margin-top: -38px;"><a class="btn btn-secondary btn-lg fs-4" role="button" id="openAdd" style="font-family: 'Noto Sans', sans-serif;background: var(--bs-border-color-translucent);margin-right: 27px;" data-bs-target="#modalAdd" data-bs-toggle="modal"><i class="far fa-edit" style="font-size: 19px;color: var(--bs-yellow);"></i>&nbsp;Добавить запись</a></div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div class="col">
+                <div>
+                    <div class="py-4"><a class="btn btn-light text-center" role="button" id="video" style="margin-left: -1px;font-size: 41px;background: var(--bs-border-color-translucent);" href="video.html"><img class="rounded img-fluid border-warning fit-cover" style="height: 200px;" src="../assets/img/video.webp" width="431" height="200"><span class="fs-2" style="color: var(--bs-white);font-family: 'Abril Fatface', serif;font-size: 33px;">Видео</span></a></div>
+                </div>
+            </div>
+            <div class="col">
+                <div></div>
+                <div></div>
+                <div class="py-4" style="margin-bottom: -1px;padding-bottom: 12px;"><a class="btn btn-light text-center" role="button" id="photo" style="margin-left: -1px;font-size: 41px;background: var(--bs-border-color-translucent);" href="photo.html"><img class="rounded img-fluid border-warning fit-cover" style="height: 200px;" src="../assets/img/photo.jpg" width="431" height="200"><span class="fs-2" style="color: var(--bs-white);font-family: 'Abril Fatface', serif;font-size: 33px;">Фото</span></a></div>
+            </div>
+            <div class="col">
+                <div>
+                    <div class="py-4"><a class="btn btn-light text-center" role="button" id="audio" style="margin-left: -1px;font-size: 41px;background: var(--bs-border-color-translucent);" href="audio.html"><img class="rounded img-fluid border-warning fit-cover" style="height: 200px;" src="../assets/img/audio.png" width="431" height="200"><span class="fs-2" style="color: var(--bs-white);font-family: 'Abril Fatface', serif;font-size: 33px;">Аудио</span></a></div>
+                </div>
+            </div>
+            <div class="col" style="margin-top: 3px;padding-top: 0px;">
+                <div></div>
+            </div>
+            <div class="col" style="margin-top: 0px;">
+                <div>
+                    <div class="py-4" style="margin-top: -24px;"><a class="btn btn-light text-center" role="button" id="other" style="margin-left: -1px;font-size: 41px;background: var(--bs-border-color-translucent);" href="other.html"><img class="rounded img-fluid border-warning fit-cover" style="height: 200px;" src="../assets/img/other.jpg" width="431" height="200"><span class="fs-2" style="color: var(--bs-white);font-family: 'Abril Fatface', serif;font-size: 33px;">Другие</span></a></div>
+                </div>
+            </div>
+            <div class="col" style="margin-top: 0px;">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center bg-dark">
+        <div class="container text-white py-4 py-lg-5" style="height: 100px;">
+            <ul class="list-inline" style="margin-bottom: 13px;margin-top: -27px;">
+                <li class="list-inline-item me-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook text-light">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+                    </svg></li>
+                <li class="list-inline-item me-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-twitter text-light">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+                    </svg></li>
+                <li class="list-inline-item"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-instagram text-light">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                    </svg></li>
+            </ul>
+            <p class="text-muted mb-0" style="font-family: 'Kaushan Script', serif;">Copyright © 2023 DigitalStudio</p>
+        </div>
+    </footer>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
+    <script src="../assets/js/addModelService.js"></script>
+    <script src="../assets/js/Animated-Pretty-Product-List-v12-Animated-Pretty-Product-List.js"></script>
+    <script src="../assets/js/DateRangePicker-My-Date-Picker.js"></script>
+    <script src="../assets/js/Drag-and-Drop-Multiple-File-Form-Input-upload-Advanced-drop.js"></script>
+    <script src="../assets/js/Dynamically-Add-Remove-Table-Row-style.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="../assets/js/modelView.js"></script>
+    <script src="../assets/js/MUSA_product-display-product-display.js"></script>
+</body>
+
+</html>

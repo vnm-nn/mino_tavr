@@ -82,7 +82,7 @@ public class ManufacturingCard extends Card {
             CTRow ctrow = CTRow.Factory.parse(rowTemplate.getCtRow().newInputStream());
             XWPFTableRow descriptionRow = new XWPFTableRow(ctrow, tables.get(3));
             final var nameCell = descriptionRow.getCell(0);
-            writeField(nameCell, device.getName(), fs);
+            writeField(nameCell, device.getDevice(), fs);
             final var serialNumberCell = descriptionRow.getCell(1);
             writeField(serialNumberCell, device.getSerialNumber(), fs);
             final var inventoryNumberCell = descriptionRow.getCell(2);

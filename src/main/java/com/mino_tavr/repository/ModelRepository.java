@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ModelRepository extends JpaRepository<Model, Integer> {
-    List<Model> findAllByDeviceType(int deviceType);
+    List<PreviewModels> findByDeviceType(int deviceType);
 }

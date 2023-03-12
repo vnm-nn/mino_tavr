@@ -14,8 +14,8 @@ public class Description {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "device")
+    private String device;
     @Column(name = "serial_number")
     private String serialNumber;
     @Column(name = "inventory_number")
