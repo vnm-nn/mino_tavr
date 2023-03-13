@@ -2,6 +2,7 @@ package com.mino_tavr.controller;
 
 import com.mino_tavr.dto.AddModelRequestDto;
 import com.mino_tavr.dto.ModelIdResponseDto;
+import com.mino_tavr.dto.PreviewModelsResponseDto;
 import com.mino_tavr.dto.SingleModelResponseDto;
 import com.mino_tavr.service.docTemplateService.DocumentPath;
 import com.mino_tavr.service.docTemplateService.ManufacturingCard;
@@ -24,6 +25,11 @@ import java.util.List;
 public class ManufactureController {
     private final ManufactureService manufacture;
 
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
+
     @PostMapping("/add")
     public ModelIdResponseDto addModel(@RequestBody AddModelRequestDto modelData) {
         return manufacture.addModel(modelData);
@@ -35,7 +41,7 @@ public class ManufactureController {
     }
 
     @GetMapping("/models/{type}")
-    public List<SingleModelResponseDto> getModelsByType(@PathVariable Integer type) {
+    public List<PreviewModelsResponseDto> getModelsByType(@PathVariable Integer type) {
         return manufacture.getModelsByDeviceType(type);
     }
 

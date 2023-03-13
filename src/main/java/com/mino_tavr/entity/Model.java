@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.util.List;
 
 @Getter
@@ -20,6 +21,8 @@ public class Model {
     boolean done;
     @Column(name = "note")
     String note;
+    @Column(name = "notification")
+    Date notification;
     @Lob
     @Column(name = "image", columnDefinition = "BLOB")
     private byte[] image;

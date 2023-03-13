@@ -13,8 +13,8 @@ public class AddModelRequestDto {
     private int reason;
     private String reasonNumber;
     private EmployeeDto dealer;
-    private String memberName;
     private Date date;
     private Date notification;
+    private String memberName;
     private List<DescriptionDto> descriptions;
 }

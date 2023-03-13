@@ -4,6 +4,7 @@ import com.mino_tavr.broker.ImageBroker;
 import com.mino_tavr.dto.*;
 import com.mino_tavr.entity.*;
 import com.mino_tavr.repository.ModelRepository;
+import com.mino_tavr.repository.PreviewModels;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,14 +22,14 @@ public class ManufactureServiceImpl implements ManufactureService {
 
     private Description getDescriptionFromDescriptionDto(DescriptionDto descriptionData) {
         Description description = new Description();
-        description.setName(descriptionData.getName());
+        description.setDevice(descriptionData.getDevice());
         description.setSerialNumber(descriptionData.getSerialNumber());
         description.setInventoryNumber(descriptionData.getInventoryNumber());
         description.setRemark(descriptionData.getRemark());
         return description;
     }
     private DescriptionDto getDescriptionDtoFromDescription(Description descriptionData) {
-        return new DescriptionDto(descriptionData.getName(),
+        return new DescriptionDto(descriptionData.getDevice(),
                 descriptionData.getSerialNumber(),
                 descriptionData.getInventoryNumber(),
                 descriptionData.getRemark()
@@ -64,6 +65,13 @@ public class ManufactureServiceImpl implements ManufactureService {
         return singleModel;
     }
 
+    private PreviewModelsResponseDto getModelPreview(PreviewModels model) {
+        var singleModel = new PreviewModelsResponseDto();
+        singleModel.setId(model.getId());
+        singleModel.setImage(model.getImage());
+        return singleModel;
+    }
+
     @Override
     public ModelIdResponseDto addModel(AddModelRequestDto dataOfNewModel) {
         // Create Interaction begin & end field
@@ -76,13 +84,10 @@ public class ManufactureServiceImpl implements ManufactureService {
                 "25",
                 "Т"));
 
-
         // Date is empty (null)
         var interactionEnd = new Interaction();
         interactionEnd.setDealer(new Employee("-", "-", "-"));
         interactionEnd.setMember(new Employee("-", "-", "-"));
-
-      
 
         // Create Reason field
         Reason reason = new Reason();
@@ -92,15 +97,14 @@ public class ManufactureServiceImpl implements ManufactureService {
         // Create Model and save data(Model) to repository(DB)
         Model model = new Model();
         model.setDone(false);
+        model.setNotification(dataOfNewModel.getNotification());
         model.setImage(imageBroker.getDummyImageModelPreview());
         model.setDeviceType(dataOfNewModel.getDeviceType());
         model.setInteractionBegin(interactionBegin);
         model.setInteractionEnd(interactionEnd);
         model.setReason(reason);
 
-
         /* Create Description fields and set to model */
-
         model.setDescriptions(dataOfNewModel.getDescriptions().stream()
                 .map(this::getDescriptionFromDescriptionDto)
                 .collect(Collectors.toList()));
@@ -115,9 +119,9 @@ public class ManufactureServiceImpl implements ManufactureService {
     }
 
     @Override
-    public List<SingleModelResponseDto> getModelsByDeviceType(Integer type) {
-        List<Model> allByType = modelRepository.findAllByDeviceType(type);
-        return allByType.stream().map(this::getSingleModel).collect(Collectors.toList());
+    public List<PreviewModelsResponseDto> getModelsByDeviceType(Integer type) {
+        List<PreviewModels> allModelsByType = modelRepository.findByDeviceType(type);
+        return allModelsByType.stream().map(this::getModelPreview).collect(Collectors.toList());
     }
 }
 

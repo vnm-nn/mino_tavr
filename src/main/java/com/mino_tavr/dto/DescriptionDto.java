@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class DescriptionDto {
-    private String name;
+    private String device;
     private String serialNumber;
     private String inventoryNumber;
     private String remark;
