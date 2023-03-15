@@ -114,6 +114,7 @@ public class ManufactureServiceImpl implements ManufactureService {
     @Override
     public SingleModelResponseDto getModelById(Integer modelId) {
         // TODO Create exception 404 Not Found
+        List<Model> modelByDone = modelRepository.getModelByDone(false);
         var model = modelRepository.findById(modelId).orElseThrow(IllegalArgumentException::new);
         return getSingleModel(model);
     }

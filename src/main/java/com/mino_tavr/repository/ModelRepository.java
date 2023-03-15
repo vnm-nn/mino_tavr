@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ModelRepository extends JpaRepository<Model, Integer> {
     List<PreviewModels> findByDeviceType(int deviceType);
-    List<Model> getModelByDone();
+    List<Model> getModelByDone(boolean isDone);
 }
